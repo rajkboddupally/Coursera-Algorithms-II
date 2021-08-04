@@ -1,12 +1,22 @@
-package test.java.com;
-
-/* Raj Kumar Boddupally created on 8/3/2021 inside the package - test.java.com */
+package com;
 
 import main.java.com.Graph;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.stream.StreamSupport;
 
-public class GraphApiTest {
+/* Raj Kumar Boddupally created on 8/4/2021 inside the package - com */
+class GraphTest {
+
+
+    @Test
+    void addEdge() {
+    }
+
+    @Test
+    void adj() {
+    }
 
     @Test
     public void createGraph() {
@@ -21,8 +31,7 @@ public class GraphApiTest {
 
         Assertions.assertEquals(2, count2);
 
-        //Assert.assertEquals(3, StreamSupport.stream(graph.adj(4).spliterator(), false).count());
+        Assertions.assertEquals(3, StreamSupport.stream(graph.adj(4).spliterator(), false).count());
     }
-
 
 }
