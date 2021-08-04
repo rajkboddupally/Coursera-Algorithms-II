@@ -7,6 +7,7 @@ import main.java.com.Graph;
 import java.util.stream.StreamSupport;
 
 public class GraphApiTest {
+
     @Test
     public void createGraph() {
         Graph graph = new Graph(5);
