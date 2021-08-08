@@ -17,7 +17,7 @@ public class DepthFirstPaths {
         dfs(g, s);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Graph graph = new Graph(10);
         graph.addEdge(0, 4);
         graph.addEdge(1, 3);
@@ -35,6 +35,10 @@ public class DepthFirstPaths {
         );
         System.out.println();
         System.out.println("0 connected to 2 " + dfs.hasEdgeTo(2));
+        System.out.println("print 0-2 path ");
+        dfs.path(2).forEach(x ->
+                System.out.print(x + " => ")
+        );
     }
 
     private void dfs(Graph g, int v) {
@@ -51,8 +55,8 @@ public class DepthFirstPaths {
         return marked[v];
     }
 
-    public Iterable<Integer> path(int v) {
-        if (!marked[v]) return null;
+    public Iterable<Integer> path(int v) throws Exception {
+        if (!marked[v]) throw new Exception("There is no path connected to " + v);
         Stack<Integer> path = new Stack<>();
         for (int w = v; w != s; w = edgeTo[w])
             path.push(w);
