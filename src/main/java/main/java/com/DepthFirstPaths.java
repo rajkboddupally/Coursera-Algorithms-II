@@ -53,11 +53,10 @@ public class DepthFirstPaths {
 
     public Iterable<Integer> path(int v) {
         if (!marked[v]) return null;
-        Stack<Integer> stack = new Stack<>();
-        for (int w = v; w != s; w = edgeTo[w]) {
-            stack.push(w);
-        }
-        stack.push(s);
-        return stack;
+        Stack<Integer> path = new Stack<>();
+        for (int w = v; w != s; w = edgeTo[w])
+            path.push(w);
+        path.push(s);
+        return path;
     }
 }
