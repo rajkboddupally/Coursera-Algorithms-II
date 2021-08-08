@@ -30,9 +30,9 @@ public class DepthFirstPaths {
 
         System.out.println("0 connected to 9 " + dfs.hasEdgeTo(9));
         System.out.println("print 0-9 path ");
-        dfs.path(9).forEach(x -> {
-            System.out.print(x + " => ");
-        });
+        dfs.path(9).forEach(x ->
+                System.out.print(x + " => ")
+        );
         System.out.println();
         System.out.println("0 connected to 2 " + dfs.hasEdgeTo(2));
     }
