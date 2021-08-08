@@ -8,7 +8,7 @@ public class Graph {
     private final int V;
     private final Bag<Integer>[] adj;
 
-    
+
     public Graph(int v) {
         this.V = v;
         this.adj = (Bag<Integer>[]) new Bag[v];
@@ -24,5 +24,9 @@ public class Graph {
 
     public Iterable<Integer> adj(int v) {
         return adj[v];
+    }
+
+    public int V() {
+        return this.V;
     }
 }
