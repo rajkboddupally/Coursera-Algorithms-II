@@ -4,6 +4,8 @@ package main.java.com;
 
 import edu.princeton.cs.algs4.Stack;
 
+import java.util.NoSuchElementException;
+
 public class DepthFirstPaths {
     private final boolean[] marked;
     private final int[] edgeTo;
@@ -17,7 +19,7 @@ public class DepthFirstPaths {
         dfs(g, s);
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Graph graph = new Graph(10);
         graph.addEdge(0, 4);
         graph.addEdge(1, 3);
@@ -55,8 +57,8 @@ public class DepthFirstPaths {
         return marked[v];
     }
 
-    public Iterable<Integer> path(int v) throws Exception {
-        if (!marked[v]) throw new Exception("There is no path connected to " + v);
+    public Iterable<Integer> path(int v) {
+        if (!marked[v]) throw new NoSuchElementException("No path from source to " + v);
         Stack<Integer> path = new Stack<>();
         for (int w = v; w != s; w = edgeTo[w])
             path.push(w);
