@@ -1,6 +1,6 @@
 package com;
 
-import main.java.com.Graph;
+import main.java.com.week1.Graph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

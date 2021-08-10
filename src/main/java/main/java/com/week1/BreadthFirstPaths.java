@@ -1,4 +1,4 @@
-package main.java.com;
+package main.java.com.week1;
 
 /* Raj Kumar Boddupally created on 8/8/2021 inside the package - main.java.com */
 
