@@ -20,6 +20,23 @@ public class ConnectedComponents {
         }
     }
 
+    private void dfs(Graph g, int v) {
+        marked[v] = true;
+        id[v] = count;
+        for (int w : g.adj(v)) {
+            if (!marked[w])
+                dfs(g, w);
+        }
+    }
+
+    public int count() {
+        return this.count;
+    }
+
+    public int id(int v) {
+        return id[v];
+    }
+
     public static void main(String[] args) {
         Graph graph = new Graph(10);
         graph.addEdge(0, 4);
@@ -39,20 +56,5 @@ public class ConnectedComponents {
         System.out.println("Total connected components " + cc.count());
     }
 
-    private void dfs(Graph g, int v) {
-        marked[v] = true;
-        id[v] = count;
-        for (int w : g.adj(v)) {
-            if (!marked[w])
-                dfs(g, w);
-        }
-    }
 
-    public int count() {
-        return this.count;
-    }
-
-    public int id(int v) {
-        return id[v];
-    }
 }
