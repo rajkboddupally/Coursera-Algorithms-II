@@ -14,12 +14,14 @@ Center: design a linear-time algorithm to find a vertex such that its maximum di
  */
 public class DiameterAndCenter {
     private int diameter;
+    private int center = Integer.MAX_VALUE;
 
     public DiameterAndCenter(Graph g) {
 
         for (int v = 0; v < g.V(); v++) {
             DepthFirstPaths dfs = new DepthFirstPaths(g, v);
             diameter = Math.max(dfs.getMaxPathLength(v), diameter);
+            center = Math.min(dfs.getMaxPathLength(v), center);
         }
     }
 
@@ -30,9 +32,14 @@ public class DiameterAndCenter {
 
         DiameterAndCenter d = new DiameterAndCenter(G);
         System.out.println(d.getDiameter());
+        System.out.println(d.getCenter());
     }
 
     public int getDiameter() {
         return this.diameter;
+    }
+
+    public int getCenter() {
+        return this.center;
     }
 }

@@ -4,6 +4,10 @@ package main.java.com.week1;
 
 import edu.princeton.cs.algs4.Bag;
 
+/*
+Graph API using Adjacency list representation
+ */
+
 public class Graph {
     private final int V;
     private final Bag<Integer>[] adj;
@@ -13,7 +17,7 @@ public class Graph {
         this.V = v;
         this.adj = (Bag<Integer>[]) new Bag[v];
         for (int i = 0; i < V; i++) {
-            adj[i] = new Bag<Integer>();
+            adj[i] = new Bag<>();
         }
     }
 
@@ -28,5 +32,9 @@ public class Graph {
 
     public int V() {
         return this.V;
+    }
+
+    public int degree(int v) {
+        return adj[v].size();
     }
 }
