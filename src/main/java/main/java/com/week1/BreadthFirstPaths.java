@@ -5,17 +5,21 @@ package main.java.com.week1;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class BreadthFirstPaths {
     private final boolean[] marked;
     private final int[] edgeTo;
     private final int s;
+    private final int[] distanceTo;
 
     public BreadthFirstPaths(Graph g, int s) {
         this.marked = new boolean[g.V()];
         this.edgeTo = new int[g.V()];
         this.s = s;
+        this.distanceTo = new int[g.V()];
+        Arrays.fill(distanceTo, 0);
 
         bfs(g);
     }
@@ -55,6 +59,7 @@ public class BreadthFirstPaths {
                     queue.enqueue(w);
                     marked[w] = true;
                     edgeTo[w] = v;
+                    distanceTo[w] = distanceTo[v] + 1;
                 }
             }
         }
@@ -73,4 +78,7 @@ public class BreadthFirstPaths {
         return path;
     }
 
+    public int distanceTo(int v) {
+        return distanceTo[v];
+    }
 }
