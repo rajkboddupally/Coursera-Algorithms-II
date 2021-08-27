@@ -27,7 +27,7 @@ public class DiGraphDFS {
         In in = new In(args[0]);
         DiGraph diGraph = new DiGraph(in);
         int s = 6;
-        int t = 1;
+        int t = 3;
         DiGraphDFS diGraphDFS = new DiGraphDFS(diGraph, s);
         System.out.println(s + " connected to " + t + " : " + diGraphDFS.visited(t));
         System.out.println("path length " + diGraphDFS.pathLength(t));
