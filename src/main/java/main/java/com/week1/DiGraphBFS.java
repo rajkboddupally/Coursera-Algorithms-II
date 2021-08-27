@@ -6,14 +6,17 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Queue;
 import edu.princeton.cs.algs4.Stack;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class DiGraphBFS {
-    private final boolean[] visited;
+    private final Set<Integer> visited;
     private final int[] pathTo;
     private final int[] edgeTo;
     private final int s;
 
     public DiGraphBFS(DiGraph diGraph, int s) {
-        visited = new boolean[diGraph.V()];
+        visited = new HashSet<>();
         pathTo = new int[diGraph.V()];
         edgeTo = new int[diGraph.V()];
         this.s = s;
@@ -27,6 +30,7 @@ public class DiGraphBFS {
         int t = 3;
         DiGraphBFS diGraphBFS = new DiGraphBFS(diGraph, s);
         System.out.println(s + " connected to " + t + " : " + diGraphBFS.visited(t));
+        System.out.println(s + " path length to " + t + " : " + diGraphBFS.pathTo(t));
         diGraphBFS.path(t).forEach(x -> System.out.print(x + " => "));
     }
 
@@ -36,9 +40,9 @@ public class DiGraphBFS {
         edgeTo[s] = s;
         while (!queue.isEmpty()) {
             int v = queue.dequeue();
-            visited[v] = true;
+            visited.add(v);
             for (int w : diGraph.adj(v)) {
-                if (!visited[w]) {
+                if (!visited.contains(w)) {
                     queue.enqueue(w);
                     edgeTo[w] = v;
                     pathTo[w] = pathTo[v] + 1;
@@ -48,7 +52,7 @@ public class DiGraphBFS {
     }
 
     public boolean visited(int v) {
-        return visited[v];
+        return visited.contains(v);
     }
 
     public int edgeTo(int v) {
