@@ -27,10 +27,11 @@ public class DiGraphDFS {
         In in = new In(args[0]);
         DiGraph diGraph = new DiGraph(in);
         int s = 6;
+        int t = 1;
         DiGraphDFS diGraphDFS = new DiGraphDFS(diGraph, s);
-        System.out.println(s + " connected to 3 " + diGraphDFS.visited(3));
-        System.out.println("path length " + diGraphDFS.pathLength(3));
-        diGraphDFS.path(3).forEach(x -> System.out.print(x + " => "));
+        System.out.println(s + " connected to " + t + " : " + diGraphDFS.visited(t));
+        System.out.println("path length " + diGraphDFS.pathLength(t));
+        diGraphDFS.path(t).forEach(x -> System.out.print(x + " => "));
     }
 
     private void dfs(DiGraph diGraph, int v) {
