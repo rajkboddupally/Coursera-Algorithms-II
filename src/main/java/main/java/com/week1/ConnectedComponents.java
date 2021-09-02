@@ -10,7 +10,7 @@ public class ConnectedComponents {
     public ConnectedComponents(Graph g) {
         this.marked = new boolean[g.V()];
         this.id = new int[g.V()];
-        this.count = 0;
+        this.count = 1;
 
         for (int v = 0; v < g.V(); v++) {
             if (!marked[v]) {
@@ -39,15 +39,16 @@ public class ConnectedComponents {
 
     public static void main(String[] args) {
         Graph graph = new Graph(10);
-        graph.addEdge(0, 4);
+        graph.addEdge(2, 4);
         graph.addEdge(1, 3);
         graph.addEdge(6, 4);
         graph.addEdge(3, 4);
         graph.addEdge(7, 3);
+        graph.addEdge(5, 8);
         graph.addEdge(7, 9);
 
         ConnectedComponents cc = new ConnectedComponents(graph);
-        System.out.println("0 connected to 9 " + (cc.id(0) == cc.id(9)));
+        System.out.println("1 connected to 9 " + (cc.id(1) == cc.id(9)));
         System.out.println("0 connected to 2 " + (cc.id(0) == cc.id(2)));
         System.out.println("3 connected to 8 " + (cc.id(3) == cc.id(8)));
         System.out.println("6 connected to 7 " + (cc.id(7) == cc.id(6)));

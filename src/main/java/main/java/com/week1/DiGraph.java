@@ -48,7 +48,9 @@ public class DiGraph {
     public static void main(String[] args) {
         In input = new In(args[0]);
         DiGraph diGraph = new DiGraph(input);
-        diGraph.print();
+        diGraph.print(diGraph);
+        System.out.println("REVERSE");
+        diGraph.print(diGraph.reverse());
 
     }
 
@@ -77,9 +79,20 @@ public class DiGraph {
         return this.E;
     }
 
-    public void print() {
+    public DiGraph reverse() {
+        DiGraph reverse = new DiGraph(V);
         for (int v = 0; v < V; v++) {
             for (int w : adj(v)) {
+                reverse.addEdge(w, v);
+            }
+        }
+        return reverse;
+    }
+
+
+    public void print(DiGraph diGraph) {
+        for (int v = 0; v < diGraph.V(); v++) {
+            for (int w : diGraph.adj(v)) {
                 System.out.println(v + " => " + w);
             }
         }
