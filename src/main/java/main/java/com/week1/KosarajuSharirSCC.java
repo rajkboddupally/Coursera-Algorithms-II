@@ -6,6 +6,8 @@ package main.java.com.week1;
 2. Run DFS from step#1
  */
 
+import edu.princeton.cs.algs4.In;
+
 public class KosarajuSharirSCC {
     private final boolean[] marked;
     private final int[] id;
@@ -14,7 +16,7 @@ public class KosarajuSharirSCC {
     public KosarajuSharirSCC(DiGraph diGraph) {
         marked = new boolean[diGraph.V()];
         id = new int[diGraph.V()];
-        count = 1;
+        count = 0;
         TopologicalSort sort = new TopologicalSort(diGraph.reverse());
         for (Integer v : sort.topologicalOrder()) {
             if (!marked[v]) {
@@ -25,18 +27,11 @@ public class KosarajuSharirSCC {
     }
 
     public static void main(String[] args) {
-        DiGraph graph = new DiGraph(10);
-        graph.addEdge(1, 3);
-        graph.addEdge(6, 4);
-        graph.addEdge(3, 4);
-        graph.addEdge(4, 1);
-        graph.addEdge(7, 3);
-        graph.addEdge(7, 9);
+        In in = new In(args[0]);
+        DiGraph graph = new DiGraph(in);
 
         KosarajuSharirSCC cc = new KosarajuSharirSCC(graph);
 
-        System.out.println(cc.stronglyConnected(1, 4));
-        System.out.println(cc.stronglyConnected(6, 1));
         System.out.println("Total connected components " + cc.getCCCount());
     }
 
